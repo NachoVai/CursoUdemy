@@ -1,0 +1,14 @@
+
+<style type="text/css" media="screen">
+ <%= ".#{category.name}" %>{
+
+   background: <%= category.color%> !important;
+ }
+</style>
+
+<div class="col-md-3">
+   <div class="jumbotron <%= "#{category.name}" %>">
+      <h1><%= category.name%></h1>
+   </div>
+</div>
+

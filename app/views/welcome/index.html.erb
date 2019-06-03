@@ -1,0 +1,10 @@
+    
+<% @articulos.each do |art| %>
+    <div class="jumbotron">
+        <h1 class="text-center">
+        <%= link_to art.title, art, class:"title-text"%>
+        </h1>
+        <p class= "text-center"><%=art.body%></p>
+    </div>
+    
+<%end%>

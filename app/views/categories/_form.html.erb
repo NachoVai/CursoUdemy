@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<div class="jumbotron">
+				<fieldset>
+         <div class="container text-center">
+            <h1><%="#{title} categoria"%> </h1>
+            <%= form_with(model: category, local: true) do |form| %>
+              <% if category.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+                  <ul>
+                  <% category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <div class="form-group row">
+                <%= form.label :name, class:"offset-md-2 col-md-3 col-form-label text-right" %>
+                <%= form.text_field :name, class:"col-md-4 form-control"  %>
+              </div>
+
+              <div class="form-group row">
+                <%= form.label :color, class:"offset-md-2 col-md-3 col-form-label text-right" %>
+                <%= form.color_field :color, class:"col-md-4 form-control"  %>
+              </div>
+
+              <div class="form-group row">                
+               <%= form.submit "Aceptar", class:"btn btn-success offset-md-3 col-md-3" %>
+               <%= link_to "Atrás", categories_path, class: "btn btn-warning col-md-3" %>                
+              </div>    
+            <% end %>
+          </div>
+				</fieldset>
+			</div>	
+		</div>
+	</div>  
+</div>	

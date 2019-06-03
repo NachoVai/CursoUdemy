@@ -1,0 +1,7 @@
+<div class = "jumbotron">
+    <h1><%= @article.title%></h1>
+    <p><%= @article.body%></p>
+    <p><%= @article.user.email%></p>
+    <%= link_to "Editar", edit_article_path(@article), class:"btn btn-success" %>
+    <%= link_to "Atrás", root_path, class:"btn btn-warning" %>
+</div>
