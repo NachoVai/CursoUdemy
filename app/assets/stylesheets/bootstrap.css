@@ -5422,7 +5422,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #F8F5F0;
+  background-color: rgba(236, 212, 131, 0.555);
   border-radius: 0.3rem;
 }
 
@@ -5677,18 +5677,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   margin-bottom: 0;
 }
 
-.list-group:hover {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
-  background-color: #000
-}
+
 
 
 .list-group-item-action {
@@ -5699,23 +5688,26 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .list-group-item-action:hover, .list-group-item-action:focus {
   z-index: 1;
-  color: #3E3F3A;
+  color: rgb(62, 63, 58);
   text-decoration: none;
   background-color: #F8F5F0;
 }
+
 
 .list-group-item-action:active {
   color: #3E3F3A;
   background-color: #DFD7CA;
 }
 
+
+
 .list-group-item {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
-  background-color: #fff;
-  border: 1px solid #DFD7CA;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(223, 211, 192) !important;
 }
 
 .list-group-item:first-child {

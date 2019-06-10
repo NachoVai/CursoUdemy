@@ -1,14 +1,26 @@
 
 <style type="text/css" media="screen">
- <%= ".#{category.name}" %>{
+ <%= ".#{category.name}".delete(' ') %>{
 
-   background: <%= category.color%> !important;
+	background: <%= category.color%> !important;
+	margin-left: -15px !important;
+	margin-right: 0px !important;
  }
 </style>
 
 <div class="col-md-3">
-   <div class="jumbotron <%= "#{category.name}" %>">
-      <h1><%= category.name%></h1>
-   </div>
+	<div class="jumbotron <%= "#{category.name}".delete(' ') %>">
+		<h1><%=category.name%></h1>
+
+		<p>
+			<%= "Contiene #{category.articles.count} articulo(s)"%>
+		</p>
+		<%if current_user.is_admin?%>
+			<%= link_to 'Editar', edit_category_path(category), class:"btn btn-success" %> 
+			<%= link_to "Eliminar", category, method: :delete, data: {confirm: "Seguro?"}, 
+			class:"btn btn-danger"%>
+		<%end%>
+	</div>
 </div>
+
 

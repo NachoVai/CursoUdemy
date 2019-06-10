@@ -14,9 +14,10 @@
  *= require_self
  */
 
- body {
-     background-color: rgba(103, 91, 105, 0.432) !important
- }
+
+body{
+    background-color: rgba(103, 91, 105, 0.432) !important
+}
 
 
 nav{
@@ -28,4 +29,10 @@ nav{
 }
  .nav-link{
      color: white !important;
+ }
+
+ .categories-show{
+     padding-top: 10;
+     padding-bottom: 10px;
+     
  }

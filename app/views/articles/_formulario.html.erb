@@ -5,7 +5,19 @@
 				<fieldset>
 					<div class="container text-center">
 						<h1><%= "#{titulo} Articulo"%></h1>
-						<%= form_with(model: @article) do |form| %>
+						<%= form_with(model: article, local: true) do |form| %>
+							<% if article.errors.any? %>
+              				 	<div id="error_explanation">
+                				 	<h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+               						<ul>
+                						<% article.errors.full_messages.each do |message| %>
+               				    			<li><%= message %></li>
+               				   			<% end %>
+                			   		</ul>
+								</div>
+							<% end %>
+
 							<div class="form-group row">
 								<%= form.label "Titulo:", class:"offset-md-2 col-md-3 col-form-label text-right" %>
 								<%= form.text_field :title, class:"col-md-4 form-control" %><br>
@@ -14,9 +26,14 @@
 								<%= form.label "Cuerpo:", class:"offset-md-2 col-md-3 col-form-label text-right" %>
 								<%= form.text_area :body, class:"col-md-4 form-control" %><br>	
 							</div>
+							<% Category.all.each do |category|%>
+								<%= check_box_tag "categories[]", category.id%> <%=category.name%><br>
+							<%end%>
 							<div class="form-group row">
-								<%= form.submit "Ok", class: "btn btn-success offset-md-3 col-md-3"%>
-								<%= link_to "Atrás", articles_path, class: "btn btn-warning col-md-3" %>
+								<div class="container text-center">
+									<%= form.submit "Ok", class: "btn btn-success offset-md-3 col-md-3"%>
+									<%= link_to "Atrás", articles_path, class: "btn btn-warning col-md-3" %>
+								</div>
 							</div>
 						<%end%>
 					</div>

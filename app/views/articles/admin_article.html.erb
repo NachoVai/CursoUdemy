@@ -1,0 +1,37 @@
+<style>
+.jumbotron{
+	margin-left: -15px !important
+}
+</style>
+<div class="jumbotron">
+	<h1>Administrador</h1>
+	<p><%=link_to "Normal", articles_path(normal: :true), class:"btn btn-info"%></p>
+	<br>
+	<table class="table table-hover">
+		<caption> Artículos   </caption>
+		<thead class="table table-active"> 
+			<tr>
+				<th>Titulo</th>
+				<th>Cuerpo</th>
+				<th>Autor</th>
+				<th>Fecha de creación</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @articulos.each do |art|%>
+				<tr>
+					<td><%=art.title%></td>
+					<td><%=truncate art.body, length: 40%></td>
+					<td><%=art.user.email%></td>
+					<td><%=art.created_at.strftime('%d-%m-%Y %H:%M')%></td>	
+					<td>
+						<%= link_to "Editar", edit_article_path(art), class:"btn btn-success"%>                    
+						<%= link_to "Ver", art, class:"btn btn-info"%>
+						<%= link_to "Eliminar", art, method: :delete, data:{confirm: "¿Desea eliminar?"},
+						class:"btn btn-danger"%>        
+					</td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>

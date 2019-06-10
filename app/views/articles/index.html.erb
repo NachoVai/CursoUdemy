@@ -1,16 +1,32 @@
+<style>
+	.jumbotron{
+		word-wrap: break-word !important;
+		
+	}
+</style>
 <div class="container-fluid">
 	<div class="row">
 		<% @articulos.each do |articulo| %>
 			<div class="col-sm-12 col-md-6 col-lg-4s">
 				<div class="jumbotron">
 					<h1><%= link_to articulo.title, articulo  %></h1>
-					<p><%= articulo.body%></p>
-					<%= link_to "Editar", edit_article_path(articulo), class:"btn btn-success"%>
-					<%= link_to "Eliminar #{articulo.title}", articulo, method: :delete, data: {confirm: "Seguro?"}, 
-					class:"btn btn-danger"%>
+					<p><%= truncate(articulo.body, length:200)%></p>
+					<%temporal = "Categoria(s):"%>
+					<%articulo.categories.each do |category|%>
+						<%temporal = "#{temporal} #{category.name}"%>
+					<%end%>
+					<p><%=temporal%></p>
+					<%if user_signed_in?%>
+						<%if current_user.is_editor?%>
+							<%= link_to "Editar", edit_article_path(articulo), class:"btn btn-success"%>
+						<%end%>
+						<%if current_user.is_admin?%>
+							<%= link_to "Eliminar #{articulo.title}", articulo, method: :delete, data: {confirm: "Seguro?"}, 
+							class:"btn btn-danger"%>
+						<%end%>
+					<%end%>
 				</div>
 			</div>
 		<%end%>
 	</div>
 </div>
-	
